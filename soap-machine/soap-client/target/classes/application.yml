@@ -1,0 +1,22 @@
+server:
+   #address: localhost
+   port: 8085
+   servlet:
+       context-path: /soap-client/ # Context path of the application.
+       display-name: SoapApi # Display name of the application.
+
+#Multipart      
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB 
+      max-request-size: 100MB
+
+    #location: /tmp/   
+      
+security:
+      basic:
+        enabled: false
+management:
+     security:
+         enabled: false
