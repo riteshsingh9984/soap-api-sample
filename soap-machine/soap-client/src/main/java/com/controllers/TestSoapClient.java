@@ -1,5 +1,6 @@
 package com.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,8 @@ import com.soapclient.SoapConnector;
 @RequestMapping("test-soap")
 public class TestSoapClient {
 
-	SoapConnector soap = new SoapConnector();
+	@Autowired
+	private SoapConnector soapConnector;
 	
 	@GetMapping("data")
 	public String getData() {
@@ -22,7 +24,7 @@ public class TestSoapClient {
 		GetStudentDetailsRequest studentDetailsRequest = ob.createGetStudentDetailsRequest();
 		studentDetailsRequest.setId(0);
 		String url = "http://localhost:8084/soap-api/ws/students.wsdl";
-		Object o = soap.soapConnect(url, studentDetailsRequest);
+		Object o = soapConnector.soapConnect(url, studentDetailsRequest);
 		Gson g = new Gson();
 		System.out.println(g.toJson(o));
 		return null;

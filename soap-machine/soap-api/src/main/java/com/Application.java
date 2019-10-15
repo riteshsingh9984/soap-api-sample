@@ -14,15 +14,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 
 @SpringBootApplication 
-@EnableScheduling
 public class Application extends SpringBootServletInitializer{
   public static void main(String[] args) {
 	//System.setProperty("spring.devtools.restart.enabled", "false");
     SpringApplication.run(Application.class, args);
   }
   
-  @Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(Application.class);
-	}
+
 }
